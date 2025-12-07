@@ -35,13 +35,13 @@ This project explores the feasibility, efficiency, and research implications of 
 
 ## Sys. Arch.
 
-| Component and Role |
+ Component and Role 
 
-| **Linux Kernel Module** - Hooks into Netfilter to monitor TCP traffic |
-| **Netfilter (LOCAL_OUT & PRE_ROUTING)** - Captures outbound and inbound Bitcoin packets |
-| **Atomic counters** -  Tracks packet statistics |
-| **Spinlocks** - Protects shared peer-table memory |
-| **/proc filesystem** - Exposes metrics to user space |
+ **Linux Kernel Module** - Hooks into Netfilter to monitor TCP traffic 
+ **Netfilter (LOCAL_OUT & PRE_ROUTING)** - Captures outbound and inbound Bitcoin packets 
+ **Atomic counters** -  Tracks packet statistics 
+ **Spinlocks** - Protects shared peer-table memory 
+ **/proc filesystem** - Exposes metrics to user space 
 
 
 **Target Port:** `8333`  
@@ -52,3 +52,24 @@ This project explores the feasibility, efficiency, and research implications of 
 ## Environment
 
 VirtualBox, Debian 13, Bitcoin Core installed using snapd.
+
+## How to Run
+
+## Installation
+
+```bash
+# Clone repository
+git clone https://github.com/<your-username>/bitnix.git
+cd bitnix/kernel
+
+# Build module
+make
+
+# Load module (as root)
+sudo insmod bitnix.ko
+
+# Check kernel log
+sudo dmesg -w
+```
+
+#PS: I had to run a node locally to see the packets in action, I tried public facing nodes but there was no network handshake to confirm the connection. because of the very secure nature of Bitcoin's Blockchain, which this was tested on.
